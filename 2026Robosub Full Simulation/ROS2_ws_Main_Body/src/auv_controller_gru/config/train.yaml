@@ -1,0 +1,43 @@
+# GRU 训练配置(服务器 Isaac python: python.sh train/train_ppo.py)
+train:
+  total_timesteps: 60000      # 短程预算(管线验证);扩大需显式传参
+  wall_budget_s: 5400         # 墙钟预算,任一到达即停(如实记录)
+  n_steps: 600
+  lr: 3.0e-4
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_eps: 0.2
+  entropy_coef: 0.01
+  value_coef: 0.5
+  epochs: 6
+  chunk_len: 64
+  batch_chunks: 8
+  max_grad_norm: 0.5
+  target_kl: 0.03
+  warmup_steps: 800           # 随机动作采集估计观测归一化
+  eval_interval_steps: 6000
+  eval_episodes: 5
+  ckpt_interval_steps: 6000
+  seed_train: 1000            # 训练/评测种子不同
+  seed_eval: 9000
+  stage: 1                    # 1:0.4m/无旋转 2:0.8m/±30°yaw 3:1.2m/≤60°
+  control_dt: 0.05
+  time_limit_s: 30.0
+  physics_hz: 120
+  hidden: 64
+
+reward:
+  pos_k: 2.0
+  pos_tol_m: 0.08
+  ang_k: 0.6
+  ang_tol_rad: 0.087
+  progress_k: 1.5
+  vel_k: 0.05
+  action_k: 0.02
+  action_change_k: 0.05
+  hold_bonus: 0.5
+  oob_penalty: -40.0
+
+env:
+  oob_radius_m: 2.0
+  z_bounds: null              # null=只用 OOB 球

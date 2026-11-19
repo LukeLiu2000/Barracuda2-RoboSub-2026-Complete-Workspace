@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>auv_sensing</name>
+  <version>0.1.0</version>
+  <description>RoboSub AUV 感知包:ZED 仿真相机(Isaac Sim -> ZED SDK IPC 流)数据发布与 Isaac Sim 机器人真值接入说明</description>
+  <maintainer email="liuhao@todo.todo">liuhao</maintainer>
+  <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>rosgraph_msgs</depend>
+  <exec_depend>python3-numpy</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

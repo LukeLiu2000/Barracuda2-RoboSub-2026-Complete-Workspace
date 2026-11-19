@@ -1,0 +1,51 @@
+# =============================================================================
+# MPPI 求解器与代价函数参数(Jetson Orin Nano CPU 目标:
+# 优化 10-20 Hz / 执行 50-100 Hz —— 实测数字见 docs/test_results.md,
+# 未经实测不宣称频率达标)。
+# =============================================================================
+/**:
+  ros__parameters:
+    mppi:
+      K: 1000            # 采样轨迹条数
+      H: 15              # 预测步数
+      dt: 0.1            # 预测步长 [s] -> 时域 1.5 s
+      sigma: 10.0        # 采样标准差 [N]
+      lambda: 8.0        # softmax 温度(代价->权重)
+      alpha: 0.15        # 名义序列动量
+      shift_fill: 0.0    # 左移后末尾填充 [N]
+      seed: 42
+      substeps: 1        # 每步欧拉子步数
+
+    cost:
+      position_weight: 60.0
+      orientation_weight: 25.0
+      lin_vel_weight: 8.0
+      ang_vel_weight: 3.0
+      effort_weight: 0.02
+      smoothness_weight: 0.3
+      saturation_weight: 50.0
+      safety_weight: 200.0
+      terminal_multiplier: 8.0
+      # 世界系工作空间软约束(盒)。世界系=场景世界轴(Y-up 场景 y 竖直)。
+      # 【待实测】水池实际范围确认后收紧(与 training.yaml 的 workspace 同步)。
+      workspace_min: [-13.0, -2.5, 0.5]
+      workspace_max: [-10.5, -0.5, 2.5]
+
+    rates:
+      solver_hz: 10.0    # MPPI 优化频率
+      exec_hz: 100.0     # 控制序列执行频率
+
+    safety:
+      state_timeout_s: 0.5   # 状态断流多久 -> 零推力
+      goal_timeout_s: 10.0   # 目标过期(任务节点须以 goal_republish_hz 重发)
+      solver_stall_s: 2.0    # 解算停摆报警阈值
+
+    debug:
+      publish_debug: true    # predicted_path / optimal_sequence / diagnostics
+      # 轻量调试话题频率:current_pose/goal_pose/current_state/state_debug;
+      # 只限调试发布,不影响 solver/exec 频率
+      state_debug_hz: 10.0
+
+    topics:
+      state: /auv/state/control
+      goal: /auv/control/goal

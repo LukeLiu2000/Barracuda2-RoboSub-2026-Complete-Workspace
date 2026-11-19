@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>auv_isaac_bridge</name>
+  <version>0.1.0</version>
+  <description>Isaac Sim 进程内的 AUV 力桥与真值源(kit 脚本 + TCP 驱动 + 状态监视)。不注册为常规 ROS 节点;isaac/ 下的脚本由用户在 Script Editor 执行一次 bootstrap.py 启动。</description>
+  <maintainer email="liuhao@example.com">liuhao</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>rosgraph_msgs</exec_depend>
+  <exec_depend>diagnostic_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

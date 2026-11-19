@@ -1,0 +1,40 @@
+# =============================================================================
+# 键盘遥控 / 保持模式参数（auv_mission_control）
+# 体坐标系：+x 左舷，+y 向上，+z 向前。
+# =============================================================================
+/**:
+  ros__parameters:
+    keyboard:
+      # 目标推进速度：按键期间以此速度更新目标位置。
+      surge_speed: 0.30        # [m/s] W/S
+      sway_speed: 0.25         # [m/s] A/D
+      heave_speed: 0.25        # [m/s] ↑/↓
+      yaw_rate_deg_s: 30.0     # [deg/s] ←/→
+
+      yaw_rate_sign: 1.0
+      yaw_axis: body_up
+
+      # 目标与机器人当前位置的最大距离，单位：米。
+      # 球心随机器人移动；不是到达后才允许更新的分段控制。
+      max_goal_dist: 10.0
+      max_goal_att_deg: 45.0
+
+      state_timeout_s: 0.3
+      goal_rate_hz: 5.0
+      tick_hz: 20.0
+
+      # 世界坐标绝对边界。
+      # 暂时放宽，避免旧边界截断十米相对目标范围。
+      # 此边界不表示实际水池范围，不提供避障功能。
+      workspace_min: [-1000.0, -1000.0, -1000.0]
+      workspace_max: [1000.0, 1000.0, 1000.0]
+
+      state_topic: /auv/state/control
+      goal_topic: /auv/control/goal
+      http_port: 8791
+
+    hold:
+      state_topic: /auv/state/control
+      goal_topic: /auv/control/goal
+      republish_hz: 2.0
+      state_timeout_s: 0.5

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>auv_common</name>
+  <version>1.0.0</version>
+  <description>RoboSub AUV 公共库:推进器几何配置(唯一事实来源)、分配矩阵与有界分配、
+    体/世界坐标系四元数工具。供 auv_controller_pid / auv_controller_gru /
+    auv_experiments 复用;auv_controller_MPPI(C++)保留自身 thrusters.yaml,
+    由一致性测试 test_thruster_config_consistency.py 保证两处数值不漂移。</description>
+  <maintainer email="liuhao@example.com">liuhao</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

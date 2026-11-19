@@ -1,0 +1,167 @@
+{
+  "candidate": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/robot_barracuda2/Barracuda 2.gripper_candidate.usd",
+  "original": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/robot_barracuda2/Barracuda 2.usd",
+  "source_sha256": "bf66d41cedce6f8790ba6fea0b0e0ea2b6990bb0b59b86c1a16865a735dad9ec",
+  "backup": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/robot_barracuda2/accessories/front_gripper/backups/20261112_095015",
+  "parent": "/World/barracuda2",
+  "body": "/World/barracuda2/base_link",
+  "gripper": "/World/barracuda2/front_gripper",
+  "mount_body_mm": [
+    300.0,
+    55.0,
+    701.16790771
+  ],
+  "rod_end_body_mm": [
+    300.0,
+    132.6457135307562,
+    990.9456555967205
+  ],
+  "rod_length_m": 0.3,
+  "rod_pitch_deg": 15,
+  "body_mesh_length_m": 0.69743799,
+  "closing_signs": {
+    "finger_joint": 1,
+    "left_inner_knuckle_joint": -1,
+    "right_inner_knuckle_joint": -1,
+    "right_outer_knuckle_joint": -1,
+    "left_inner_finger_joint": 1,
+    "right_inner_finger_joint": 1
+  },
+  "open_angle_deg": 0,
+  "closed_angle_deg": 40,
+  "official_open_inner_pad_gap_m": 0.1359784,
+  "notes": "Official nominal 140mm asset; measured original pad spacing approx 136mm at zero-angle open. Original body mass40 and all original body attributes preserved; added gripper link masses add to total robot assembly mass. No ROS or torpedo-ray code modified. tool_mount Xforward/Yleft/Zup.",
+  "installed": true,
+  "installed_robot_sha256": "e5b1a92b2e0541dc0849a2d9531cef312355bf50f0f8d205e2ef5916ff04042b",
+  "pool_file_unchanged": true,
+  "validated_pool_rod_length_m": 0.30000000447034864,
+  "validated_pool_pitch_deg": 14.99999999999999,
+  "gripper_link_mass_kg": 0.3638485446572304,
+  "motion_test": {
+    "passed": true,
+    "rod_length_m": 0.30000000000000004,
+    "pitch_deg": 15,
+    "body_mass_kg": 40,
+    "motion_displacement_m": 0.46051836029550713,
+    "results": [
+      {
+        "dof_names": [
+          "finger_joint",
+          "left_inner_knuckle_joint",
+          "right_inner_knuckle_joint",
+          "right_outer_knuckle_joint",
+          "left_inner_finger_joint",
+          "right_inner_finger_joint"
+        ],
+        "dof_positions": [
+          3.4835093032370423e-08,
+          -1.5745733605854184e-08,
+          1.3272059895541588e-08,
+          1.4709027329473656e-09,
+          3.843933171765457e-09,
+          5.7942678433065e-12
+        ],
+        "phase": "open",
+        "fixed_joint_error_m": 2.376153676933178e-07,
+        "pad_centre_gap_m": 0.1360346227884286,
+        "body_world_origin": [
+          -1.4901161193847656e-07,
+          -5.960464477539062e-08,
+          0.9999999403953552
+        ]
+      },
+      {
+        "dof_names": [
+          "finger_joint",
+          "left_inner_knuckle_joint",
+          "right_inner_knuckle_joint",
+          "right_outer_knuckle_joint",
+          "left_inner_finger_joint",
+          "right_inner_finger_joint"
+        ],
+        "dof_positions": [
+          0.6981194615364075,
+          -0.6981189846992493,
+          -0.6981155276298523,
+          -0.698117733001709,
+          0.6981181502342224,
+          0.6981169581413269
+        ],
+        "phase": "closed",
+        "fixed_joint_error_m": 4.621952720997563e-07,
+        "pad_centre_gap_m": 0.007700592280390774,
+        "body_world_origin": [
+          -5.224347114562987e-05,
+          -4.291534423828125e-06,
+          1.0000754594802856
+        ]
+      },
+      {
+        "dof_names": [
+          "finger_joint",
+          "left_inner_knuckle_joint",
+          "right_inner_knuckle_joint",
+          "right_outer_knuckle_joint",
+          "left_inner_finger_joint",
+          "right_inner_finger_joint"
+        ],
+        "dof_positions": [
+          4.925024040858261e-05,
+          -4.7996971261454746e-05,
+          -6.154217408038676e-05,
+          -5.498044265550561e-05,
+          5.3767766075907275e-05,
+          5.533093280973844e-05
+        ],
+        "phase": "reopened",
+        "fixed_joint_error_m": 4.796102380411506e-07,
+        "pad_centre_gap_m": 0.13602557778351412,
+        "body_world_origin": [
+          6.645917892456054e-06,
+          -1.4901161193847654e-07,
+          0.9999914169311523
+        ]
+      },
+      {
+        "dof_names": [
+          "finger_joint",
+          "left_inner_knuckle_joint",
+          "right_inner_knuckle_joint",
+          "right_outer_knuckle_joint",
+          "left_inner_finger_joint",
+          "right_inner_finger_joint"
+        ],
+        "dof_positions": [
+          6.88741152998773e-08,
+          2.5969825401261915e-06,
+          -2.1212222236499656e-06,
+          -4.3229849211456894e-07,
+          -4.998206577511155e-07,
+          -1.6829987403710334e-09
+        ],
+        "phase": "vehicle_moving",
+        "fixed_joint_error_m": 1.2887372897612352e-06,
+        "pad_centre_gap_m": 0.13603456470084682,
+        "body_world_origin": [
+          0.46052497625350947,
+          -5.194544792175292e-05,
+          1.0001492500305176
+        ]
+      }
+    ]
+  },
+  "grasp_test": {
+    "passed": true,
+    "test_object_mass_kg": 0.2,
+    "test_object_dimensions_m": [
+      0.04,
+      0.07,
+      0.04
+    ],
+    "down_force_N": 1.962,
+    "hold_seconds": 3,
+    "slip_m": 0.003167710584348247,
+    "release_drop_m": 11.114460229873657
+  },
+  "architecture": "Vehicle stays original free rigid body; gripper retains separate floating articulation, attached via excluded fixed joint. Rod visual under tool_mount; SI rod collider on gripper base. No original body, thruster, camera, PID attributes changed."
+}

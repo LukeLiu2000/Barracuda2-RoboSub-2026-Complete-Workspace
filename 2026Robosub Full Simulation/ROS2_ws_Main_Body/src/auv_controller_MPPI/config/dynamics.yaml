@@ -1,0 +1,32 @@
+# 本轮简化物理：
+# 零重力、无浮力、无背景水流。
+# Isaac 使用原生 linearDamping=2.0、angularDamping=1.0。
+# 桥的 hydrodynamics.enabled 必须保持 false。
+#
+# 惯量使用运行时读取值的对角近似。
+# 阻尼为原生阻尼的连续时间等效近似，仍需实验验证。
+
+/**:
+  ros__parameters:
+    dynamics:
+      mass: 40.0
+
+      inertia: [1.715973, 2.146725, 1.099655]
+
+      added_mass: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+      # 平移等效系数约为 mass * linearDamping。
+      # 旋转等效系数约为 inertia * angularDamping。
+      linear_damping:
+        [80.0, 80.0, 80.0, 1.715973, 2.146725, 1.099655]
+
+      # 本轮不叠加桥中的二次阻尼。
+      quadratic_damping:
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+      gravity_world: [0.0, 0.0, 0.0]
+      world_up: [0.0, 0.0, 1.0]
+      buoyancy_force: 0.0
+
+      cb_position: [0.0, 0.0, 0.0]
+      thrust_scale: 1.0

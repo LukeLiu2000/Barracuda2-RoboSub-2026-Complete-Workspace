@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>auv_controller_pid</name>
+  <version>1.0.0</version>
+  <description>六自由度 PID 控制器(ament_python)。世界系位置误差/机体系输出,
+    姿态误差用相对旋转(非欧拉角相减),位置误差导数含坐标旋转项,
+    积分限幅+抗饱和+分配饱和反馈,微分低通,输出限幅,复位与诊断;
+    推力经 auv_common 公共几何有界分配到 8 推进器。</description>
+  <maintainer email="liuhao@example.com">liuhao</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>auv_common</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

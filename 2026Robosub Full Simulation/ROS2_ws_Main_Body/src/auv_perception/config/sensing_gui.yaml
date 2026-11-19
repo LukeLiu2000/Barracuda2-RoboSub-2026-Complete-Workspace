@@ -1,0 +1,17 @@
+/auv/zed_sensor_node:
+  ros__parameters:
+    stream_ip: 127.0.0.1
+    stream_port: 30000
+    depth_mode: NEURAL
+    publish_left_image: true
+    publish_right_image: false
+    publish_depth: false
+    publish_points: true
+    publish_imu: true
+    image_rate_hz: 5.0
+    points_rate_hz: 5.0
+    points_max_points: 500000
+    left_frame: zed_left_camera_frame
+    points_frame: zed_left_camera_frame
+    imu_frame: zed_imu_link
+    summary_period_s: 2.0

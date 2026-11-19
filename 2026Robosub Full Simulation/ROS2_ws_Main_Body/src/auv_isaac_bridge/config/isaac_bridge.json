@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "_comment_zh": "AUV Isaac 桥配置。长度单位一律【米】,力 N,力矩 N·m,体坐标系为 MPPI 约定:+x 左舷 +y 上 +z 艇体纵轴(前);roll 绕 z / pitch 绕 x / yaw 绕 y。来源标注:measured=USD 只读解析实测(2026-11-02, Barracuda 2.usd);assumed=暂定假设,待闭环辨识修正。配置文件修改后桥会自动热重载(监听 mtime),也可用 TCP 命令 config_reload 强制重载。v2(2026-11-03):prim 路径改为用户在 live 舞台手动确认的比赛场景路径(/World/Barracuda_2 前缀);robot_root_paths 为刚体回退扫描的【唯一】许可范围(绝不全局扫描,防止误绑 gate 等道具);zed_root_paths 供 sensor_scan 只读遍历。",
+
+  "robot_prim_path": "/World/Barracuda_2/barracuda2/base_link",
+  "robot_root_paths": [
+    "/World/Barracuda_2",
+    "/World/barracuda2"
+  ],
+  "_roots_note": "精确路径失效时只在这些根内部扫 RigidBodyAPI(取最浅);第二个根兼容单独打开原始资产 Barracuda 2.usd 的情形。",
+  "thruster_prim_paths": [
+    "/World/Barracuda_2/barracuda2/thruster_0",
+    "/World/Barracuda_2/barracuda2/thruster_1",
+    "/World/Barracuda_2/barracuda2/thruster_2",
+    "/World/Barracuda_2/barracuda2/thruster_3",
+    "/World/Barracuda_2/barracuda2/thruster_4",
+    "/World/Barracuda_2/barracuda2/thruster_5",
+    "/World/Barracuda_2/barracuda2/thruster_6",
+    "/World/Barracuda_2/barracuda2/thruster_7"
+  ],
+  "zed_root_paths": [
+    "/World/Barracuda_2/barracuda2/base_link/zed_link",
+    "/World/barracuda2/base_link/zed_link"
+  ],
+
+  "mass_kg": 40.0,
+  "_mass_note": "measured: USD UsdPhysics.MassAPI mass=40",
+
+  "com_base_link_m": [0.29171041, 0.16131385, 0.37127125],
+  "_com_note": "estimated: 碰撞网格体积质心(USD 未 author COM,PhysX 运行时自动计算的质心理论同量级,残余偏差用 evaluate 命令实测)。体坐标系原点约定=质心:桥发布的里程计位置/速度均为质心系,所有下游(控制器/键盘/采集)使用同一原点,控制器侧 apply_com_offset 必须为 false。",
+
+  "thrusters": {
+    "_note": "positions 为相对质心的安装位置[m](measured,未缩放实际尺寸;与 thrusters.yaml 保持一致);directions 为体坐标系单位推力方向(=各推进器 USD 局部 +X,measured;正负号待逐推进器小推力实测确认,若反了改这里并 config_reload 即可,矩阵 B 秩不变)。桥启动时会从当前加载场景的 prim 变换再次推导一份几何做交叉校验,偏差超阈值会写进 bridge_status。",
+    "positions": [
+      [-0.21071041, -0.06131385,  0.29172875],
+      [ 0.21828959, -0.06131385,  0.29172875],
+      [ 0.21828959, -0.06131385, -0.29627125],
+      [-0.21071041, -0.06131385, -0.29627125],
+      [-0.24371041,  0.02868615, -0.12827125],
+      [-0.24371041,  0.02868615,  0.12672875],
+      [ 0.23828959,  0.02868615,  0.12672875],
+      [ 0.23828959,  0.02868615, -0.12827125]
+    ],
+    "directions": [
+      [ 0.70711, 0.0,  0.70711],
+      [-0.70711, 0.0,  0.70711],
+      [-0.70711, 0.0, -0.70711],
+      [ 0.70711, 0.0, -0.70711],
+      [ 0.0, 1.0, 0.0],
+      [ 0.0, 1.0, 0.0],
+      [ 0.0, 1.0, 0.0],
+      [ 0.0, 1.0, 0.0]
+    ],
+    "force_min_n": -39.2266,
+    "force_max_n": 39.2266
+  },
+
+  "hydrodynamics": {
+    "_note": "第一阶段 Zero-Gravity Damped 模式(2026-11-03 与用户约定):场景重力显式为零(合法 PhysicsScene:方向有效+magnitude=0),桥不施加任何浮力/恢复力矩,只保留体轴线性/二次阻尼(推力停止后减速)与 8 路推力。重力未确认(无 scene 或属性非法)时浮力分支本身也被闸死。后续阶段若恢复重力+浮力:把 mode 改回 neutral_compensated 并确认场景重力即可。",
+    "enabled": false,
+    "buoyancy": {
+      "mode": "off",
+      "_modes": "off: 不施加浮力(ZGD 第一阶段) | neutral_compensated: 施加 mass*|g|*ratio 于 CB(重力须已确认) | displaced_volume: 施加 rho*V*|g| 于 CB(重力须已确认)",
+      "ratio": 1.0,
+      "displaced_volume_m3": 0.0134
+    },
+    "cb_offset_body_m": [0.0, 0.02, 0.0],
+    "damping": {
+      "_note": "体坐标系 [x左舷 y上 z前];linear 单位 N·s/m,quadratic 单位 N·s^2/m^2(角量 N·m·s, N·m·s^2)。全部 assumed 暂定。",
+      "linear":  [8.0, 10.0, 8.0],
+      "quadratic": [25.0, 35.0, 30.0],
+      "angular_linear": [1.2, 1.5, 1.2],
+      "angular_quadratic": [2.5, 3.0, 2.5]
+    }
+  },
+
+  "units": {
+    "_note": "length_reported: 里程计/调试输出用真实米(numeric*mpu)。force_unit_scale: SI 牛顿 -> PhysX 施力数值的换算;auto = 1/metersPerUnit(推导:meter=mpu 个 stage 单位,mass 恒为 kg,故 numeric_force = SI/mpu)。启动后用 TCP evaluate 命令实测校验,不符时在此改为显式数值并 config_reload。",
+    "length_reported": "meters",
+    "force_unit_scale": "auto"
+  },
+
+  "timing": {
+    "command_timeout_s": 0.5,
+    "_command_timeout_note": "thruster_cmd 超时(按仿真时间)即清零输出;暂停期间物理步不触发,恢复后按仿真时间年龄判断,过期命令不重放。",
+    "state_publish_hz": 60.0,
+    "status_publish_hz": 1.0
+  },
+
+  "ros": {
+    "enabled": true,
+    "_note": "false=桥不初始化 ROS(进程内训练/整定路径,见 isaac_bridge_headless.json)。"
+  },
+
+  "safety": {
+    "enforce_single_controller": true,
+    "_note": "1Hz 检查 thruster_cmd 话题发布者数;>1 时输出置零并在 status 标注 fault,直至恢复单一写者。"
+  },
+
+  "disturbance": {
+    "_note": "双作用点随机外力(2026-11-08)。作用点 prim 是 base_link 下纯 Xform(无刚体/碰撞 API),力施加到所属刚体 base_link,力矩由 PhysX 自然生成,不重复施加 r×F。每股独立随机过程:方向=球面均匀(正态采样归一化),幅值=均匀[0,force_max_n](上限作用向量模长);每 update_interval_s 采样新目标,transition_s 余弦平滑过渡(范数凸性保证插值不越界)。mode: off|cont|step|pulse。seed 整数=可复现;TCP disturb_replay 支持序列回放。默认参数为初版经验值,未宣称最优(需实验验证)。",
+    "enabled": false,
+    "mode": "off",
+    "prim_paths": [
+      "/World/Barracuda_2/barracuda2/base_link/disturbance_0",
+      "/World/Barracuda_2/barracuda2/base_link/disturbance_1"
+    ],
+    "force_max_n": 19.6133,
+    "update_interval_s": 2.0,
+    "transition_s": 1.5,
+    "frame": "body",
+    "seed": null,
+    "fixed_vec": [0.0, 0.0, 0.0],
+    "pulse_on_s": 2.0,
+    "pulse_off_s": 2.0
+  },
+
+  "viz": {
+    "_note": "Isaac 视窗实时可视化(debug_draw 线段,不参与碰撞/不改物理)。8 推进器力=蓝,2 扰动力=红(力-长度统一比例 newtons_per_meter,默认 1m↔40N,超 max_arrow_m 裁剪并如实报 clipped);当前位姿=黄,目标位姿=绿(定长箭头,体 +z 前,附三轴小姿态标,不代表推力)。零力隐藏。更新已有线段(清空重画),不逐帧新增 prim。headless 训练可 enabled=false。",
+    "enabled": true,
+    "rate_hz": 10.0,
+    "newtons_per_meter": 40.0,
+    "pose_arrow_len_m": 0.5,
+    "axis_len_m": 0.15,
+    "max_arrow_m": 2.0
+  },
+
+  "tcp": {
+    "host": "127.0.0.1",
+    "port": 17788
+  },
+
+  "ros_topics": {
+    "thruster_cmd": "/auv/control/thruster_cmd",
+    "estop": "/auv/control/estop",
+    "goal": "/auv/control/goal",
+    "ground_truth_odom": "/auv/ground_truth/odometry",
+    "state_control": "/auv/state/control",
+    "clock": "/clock",
+    "bridge_status": "/auv/bridge/status",
+    "applied_forces": "/auv/bridge/applied_forces",
+    "disturbance_forces": "/auv/disturbance/forces"
+  }
+}

@@ -1,0 +1,51 @@
+schema_version: 1
+world_frame: auv_world
+weights: /home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/2026Robosub Full Simulation/Model_Datas/weightsYOLO26a.pt
+inference_python: /home/liuhao/.local/share/pipx/venvs/ultralytics/bin/python
+device: '0'
+confidence: 0.35
+imgsz: 800
+templates:
+- task1_gate.yaml
+state_tolerance_s: 0.12
+topics:
+  image: /auv/zed/left/image_rect
+  points: /auv/zed/points
+  camera_info: /auv/zed/left/camera_info
+camera_to_body:
+  verified: true
+  source: Current GUI live xform_dump; USD optical convention converted; actual virtual
+    baseline calibrated against SDK ZED X 0.12m
+  matrix:
+  - - -0.9999999999999093
+    - -2.4645566913540146e-07
+    - -3.480369589180457e-07
+    - 0.04197243883906765
+  - - 2.464549836808474e-07
+    - -0.9999999999980286
+    - 1.9702004812563572e-06
+    - 0.09061519674758634
+  - - -3.4803744470347397e-07
+    - 1.970200395468755e-06
+    - 0.9999999999979983
+    - 0.3144663248174808
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+  measured_baseline_m: 0.07200000438355637
+  sdk_baseline_m: 0.12
+fit:
+  points_per_part: 240
+  min_inlier_fraction: 0.65
+  max_rms_m: 0.075
+  min_condition_ratio: 0.001
+  characteristic_length: 1.5
+point_cloud_scale: 0.6000000365296365
+
+# GUI ZED simulationTime can differ from the bridge timeline after Stop/Play.
+# Estimate a constant capture-time offset from 8 fresh arrivals; preserve latency.
+sensor_time_alignment:
+  enabled: true
+  samples: 8
+  jitter_s: 0.20

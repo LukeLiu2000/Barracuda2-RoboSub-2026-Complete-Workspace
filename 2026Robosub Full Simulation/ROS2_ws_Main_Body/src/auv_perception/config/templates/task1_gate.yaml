@@ -1,0 +1,46 @@
+schema_version: 1
+id: task1_gate
+title: Task 1 · Gate
+solver: rigid_primitives
+units: meters
+frame: 'origin=beam center; x=RightPillar to LeftPillar; y=down; z=x cross y'
+source: 'composed pool.usd /World/gate_01, measured 2026-11-11; primitive approximations, not mesh-exact'
+# Side sleeves in this USD are 1.21929m, not the handbook total gate height.
+# x=+world Y, y=-world Z, z=-world X in the authored asset.
+parts:
+  LeftPillar:
+    shape: box
+    center: [1.54006, 0.72011, -0.00236]
+    size: [0.07627, 1.21929, 0.07627]
+  RightPillar:
+    shape: box
+    center: [-1.53144, 0.72011, -0.00236]
+    size: [0.07627, 1.21929, 0.07627]
+  MiddleRedPillar:
+    shape: box
+    center: [0.04570, 0.33305, 0.00203]
+    size: [0.05079, 0.60960, 0.00406]
+  HorizontalBar:
+    shape: cylinder
+    center: [0.0, 0.0, 0.0]
+    axis: 0
+    length: 3.098
+    radius: 0.022
+  FlagSOS:
+    shape: box
+    center: [-0.79116, 0.17610, 0.0]
+    size: [0.30482, 0.30482, 0.004]
+  FlagRepair:
+    shape: box
+    center: [0.75496, 0.17610, -0.002]
+    size: [0.30482, 0.30482, 0.004]
+aliases:
+  Gate: __whole__
+display_lines:
+  - [[-1.53144, 1.32975, -0.00236], [-1.53144, 0, -0.00236]]
+  - [[1.54006, 1.32975, -0.00236], [1.54006, 0, -0.00236]]
+  - [[-1.53144, 0, 0], [1.54006, 0, 0]]
+  - [[0.04570, 0.02825, 0.00203], [0.04570, 0.63785, 0.00203]]
+labels:
+  - {text: SOS, position: [-0.79116, 0.17610, 0.0]}
+  - {text: Repair, position: [0.75496, 0.17610, -0.002]}

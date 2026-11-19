@@ -1,0 +1,79 @@
+{
+  "assets": [
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task3_Recon/recon.usd",
+      "description": "Four open bins; two bright HD fire and two blood decals, full-coverage UVs, handbook-inspired orientations; no collisions.",
+      "collision_count": 0,
+      "rigid_body_count": 0,
+      "sha256": "19020bf528f20689bb4a33b39641566fa72ed3622cf9819a963ad1274b446636",
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task4_Deploy/deploy.usd",
+      "description": "Original supplied front artwork preserved as one texture; four true apertures fitted to its red-ring inner edges. Visual only.",
+      "collision_count": 0,
+      "rigid_body_count": 0,
+      "sha256": "8d1e7ba9b4e3dcbfba2a839a9d91b93448c445f5e735e7949ac308c91e28de6b",
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Octagon/octagon.usd",
+      "description": "White horizontal octagonal PVC ring only; 2.7 m across flats; no signs/collisions/physics.",
+      "collision_count": 0,
+      "rigid_body_count": 0,
+      "sha256": "3a7d5e45fa68fec7ff67d8c1ef44ed034b7e3d22ebd2e6ab6d8b93ab601db2da",
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Table/restore_table.usd",
+      "description": "Static collidable table and two open receiving trays. 0.61 m tabletop, height 0.75 m. No loose props.",
+      "collision_count": 29,
+      "rigid_body_count": 0,
+      "sha256": "c3baca8c90ab8b25eddb4672e90f65925850f503cc4906743264b6854baac92b",
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Objects/repair_bolt.usd",
+      "description": "Dynamic rigid body, mass 0.2 kg, gravity enabled by default; bottom origin. 70 mm diameter x 50 mm",
+      "collision_count": 2,
+      "rigid_body_count": 1,
+      "sha256": "1d4bd84be103af1d13f4c5df26e36c982c8cdfb32bb5d9a279eb5c17aa168132",
+      "verified_mass_kg": 0.20000000298023224,
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Objects/rescue_pill.usd",
+      "description": "Dynamic rigid body, mass 0.2 kg, gravity enabled by default; bottom origin. 70 mm diameter x 50 mm",
+      "collision_count": 2,
+      "rigid_body_count": 1,
+      "sha256": "ef209a991a1540912ae5936ffcad5ffe4d3b4554dfef43627d97efac5f584adb",
+      "verified_mass_kg": 0.20000000298023224,
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Objects/repair_plug.usd",
+      "description": "Dynamic rigid body, mass 0.2 kg, gravity enabled by default; bottom origin. 84 x 84 x 30 mm",
+      "collision_count": 1,
+      "rigid_body_count": 1,
+      "sha256": "6d3c78b51c3084b15289ee4295d41580504f838cfe635855afa04e00873f2522",
+      "verified_mass_kg": 0.20000000298023224,
+      "dependency_check": "passed"
+    },
+    {
+      "file": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task5_Objects/rescue_bandage.usd",
+      "description": "Dynamic rigid body, mass 0.2 kg, gravity enabled by default; bottom origin. 84 x 84 x 30 mm",
+      "collision_count": 1,
+      "rigid_body_count": 1,
+      "sha256": "b0badd2590f39786ad2109a2cc45006b891324733de8e1c77fc39f2c5e8903c9",
+      "verified_mass_kg": 0.20000000298023224,
+      "dependency_check": "passed"
+    }
+  ],
+  "coordinates": "Z up, metres. Props/table bottom at Z=0; octagon origin at ring centre. Panel faces -Y.",
+  "physics_note": "Dynamic props fall only if containing scene gravity is nonzero. Existing pool was previously zero-gravity; this generator does not change it. No buoyancy/underwater drag authored.",
+  "assumptions": "Recon support layout, tray dimensions, panel aperture diameters (0.14/0.096 m) and stand dimensions are adjustable visual approximations, not certified official CAD. Octagon is ring only as requested; hanging signs not included.",
+  "texture_source": "Panel: unmodified supplied image with UV crop. Task5: six built-in imagegen cartoon textures, original high-resolution output preserved. Original Recon decals unchanged.",
+  "validation": "USD reopen, dependency resolution, Z-up/metres, collider and rigid-body counts, four aperture centre rays, four 0.2kg masses verified; CPU previews inspected. No live ZED or PhysX drop test performed.",
+  "revision": "v2: exact panel artwork and ring alignment; six new bright high-resolution cartoon decals; round jar labels with margin.",
+  "recon_revision": "v3 high-resolution fire/blood symbols, 305mm decals, full shapes and wide margins"
+}

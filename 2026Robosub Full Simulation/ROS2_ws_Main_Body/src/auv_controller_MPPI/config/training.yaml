@@ -1,0 +1,55 @@
+# =============================================================================
+# Training Mode 参数(training_mission_node + training_data_collector_node)
+# =============================================================================
+/**:
+  ros__parameters:
+    training:
+      mode: random_goals        # random_goals | excitation
+      rate_hz: 20.0
+      state_topic: /auv/state/control
+      goal_topic: /auv/control/goal
+      goal_frame: world         # 状态帧未知时的兜底坐标系
+
+      # ---- 随机目标 ----
+      # 世界系 = 里程计 frame auv_world = 场景世界轴(Y-up 场景 y 为竖直)。
+      # 【待实测】实际水池边界用 TCP stage_info + 真值位置确认后收紧;
+      # 下值为保守范围(原点附近 ±2 m,竖直 -1..2 m)。
+      workspace_min: [-2.0, -1.0, -2.0]
+      workspace_max: [+2.0, +2.0, +2.0]
+      max_displacement: 1.5     # 相对当前位置最大位移 [m]
+      max_roll_deg: 15.0
+      max_pitch_deg: 15.0
+      max_yaw_deg: 30.0
+      pos_tol: 0.15             # 到达容差 [m]
+      ang_tol_deg: 8.0
+      hold_s: 1.5               # 容差内保持时间
+      goal_timeout_s: 40.0
+      num_goals: 0              # 0 = 无限
+      goal_republish_hz: 2.0    # 目标重发频率(控制器 goal_timeout 内必须刷新)
+
+      # ---- 激励实验(辨识用)----
+      # 广义力轴:0..2 = Fx,Fy,Fz [N];3..5 = Mx,My,Mz [N·m]
+      excitation_axes: [2]      # 默认纯 surge(纵轴)力
+      excitation_amplitude: 20.0
+      excitation_profile: chirp # step | chirp | rand
+      excitation_duration_s: 15.0
+      excitation_rest_s: 5.0
+      excitation_period_s: 4.0
+      excitation_repetitions: 8
+
+    collector:
+      sample_dt: 0.05           # 记录周期 [s]
+      # 与控制器同一状态源(任务书要求:控制/训练/采集状态话题一致;
+      # 桥发布 /auv/state/control 与 /auv/ground_truth/odometry 同内容)
+      state_topic: /auv/state/control
+      # output_dir 由 launch 填成包目录内 data/(授权目录内)
+
+    basic_mission:
+      forward_m: 1.0
+      yaw_deg: 30.0
+      pos_tol: 0.10
+      ang_tol: 0.087            # ≈5°
+      v_tol: 0.10
+      w_tol: 0.15
+      hold_s: 1.0
+      timeout_s: 60.0

@@ -1,0 +1,16 @@
+/**:
+  ros__parameters:
+    # 模型产物:默认指向部署目录;训练完成后复制/或 launch 覆盖
+    model_npz: /home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/2026Robosub Full Simulation/ROS2_ws_Main_Body/models/gru/gru_policy.npz
+    model_meta: /home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/2026Robosub Full Simulation/ROS2_ws_Main_Body/models/gru/gru_policy_meta.json
+    topics:
+      state: /auv/state/control
+      goal: /auv/control/goal
+    rates:
+      control_hz: 50.0
+    safety:
+      state_timeout_wall_s: 0.6
+    gru:
+      teleport_reset_m: 0.5
+      hold_on_start: true
+      action_scale_n: 0.0

@@ -1,0 +1,102 @@
+{
+  "asset": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/Task3_Recon/recon.usd",
+  "backup": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/_task_asset_sources/backups/recon_decals_20261112_091257",
+  "images": [
+    {
+      "prim": "/recon/Bin0/Image",
+      "texture": "blood_recon_hd_v3.png",
+      "decal_size_m": 0.305,
+      "uv": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "prim": "/recon/Bin1/Image",
+      "texture": "fire_recon_hd_v3.png",
+      "decal_size_m": 0.305,
+      "uv": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "prim": "/recon/Bin2/Image",
+      "texture": "fire_recon_hd_v3.png",
+      "decal_size_m": 0.305,
+      "uv": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "prim": "/recon/Bin3/Image",
+      "texture": "blood_recon_hd_v3.png",
+      "decal_size_m": 0.305,
+      "uv": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "preserved_other_prims": 43,
+  "pool_unchanged": true,
+  "validation": "Reopened USD, 4 full-coverage UVs and image dependencies checked. Geometry outside decal quads, materials outside decal materials, physics and pool transforms unchanged.",
+  "texture_notes": "Two separately generated high-resolution cartoon icons, each fully visible with wide white margins. Source textures stored with native generated resolution. Two fire and two blood decals; no other task textures touched."
+}

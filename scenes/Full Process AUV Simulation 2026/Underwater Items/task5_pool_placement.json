@@ -1,0 +1,70 @@
+{
+  "scene": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Pool Enviroment/pool.usd",
+  "backup": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/_task_asset_sources/backups/pool_props_20261112_085522",
+  "tabletop_world_z": 0.8408476157511366,
+  "props": [
+    {
+      "name": "repair_bolt",
+      "created": false,
+      "world_bottom": [
+        5.309811225231143,
+        -0.9266632848020534,
+        1.0408476157511366
+      ],
+      "clearance_m": 0.2,
+      "mass_kg": 0.2,
+      "down_force_N": 1.962
+    },
+    {
+      "name": "repair_plug",
+      "created": true,
+      "world_bottom": [
+        5.589811225231142,
+        -0.9266632848020534,
+        1.0408476157511366
+      ],
+      "clearance_m": 0.2,
+      "mass_kg": 0.2,
+      "down_force_N": 1.962
+    },
+    {
+      "name": "rescue_pill",
+      "created": true,
+      "world_bottom": [
+        5.309811225231143,
+        -0.6466632848020534,
+        1.0408476157511366
+      ],
+      "clearance_m": 0.2,
+      "mass_kg": 0.2,
+      "down_force_N": 1.962
+    },
+    {
+      "name": "rescue_bandage",
+      "created": true,
+      "world_bottom": [
+        5.589811225231142,
+        -0.6466632848020534,
+        1.0408476157511366
+      ],
+      "clearance_m": 0.2,
+      "mass_kg": 0.2,
+      "down_force_N": 1.962
+    }
+  ],
+  "unchanged_other_prims": 266,
+  "gravity": "Global unchanged at 0; four props only get world -Z force 1.962N each at mass 0.2kg, equivalent to g=9.81m/s^2. Built-in gravity disabled on these props to avoid future double-counting.",
+  "validation": "Saved pool reopened and checked; separate headless Isaac 3-second physics test passed. Current GUI stage not reloaded or played by agent.",
+  "isolated_physics_test": {
+    "passed": true,
+    "sim_seconds": 3,
+    "settled_bottom_z": {
+      "repair_bolt": 0.8408475518226624,
+      "repair_plug": 0.8408476710319519,
+      "rescue_pill": 0.8408476710319519,
+      "rescue_bandage": 0.8408476710319519
+    },
+    "tabletop_z": 0.8408476157511366,
+    "zero_gravity_control_z": 2.0
+  }
+}

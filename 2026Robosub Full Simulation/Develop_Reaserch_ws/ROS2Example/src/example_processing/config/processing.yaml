@@ -1,0 +1,10 @@
+# report_node 的默认参数文件。
+#
+# 顶层键用 `/**` 通配任意命名空间(原因见 example_source/config/source.yaml
+# 里的说明:不带斜杠的键在节点有命名空间时会静默失效)。
+# square_node 没有声明 batch_size 参数,未声明的覆盖会被忽略。
+#
+# 生效方式:processing.launch.py 把本文件路径传给 report_node 的 parameters。
+/**:
+  ros__parameters:
+    batch_size: 5   # 每批消息条数,必须为正整数

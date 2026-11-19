@@ -1,0 +1,38 @@
+{
+  "scene": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Pool Enviroment/pool.usd",
+  "backup": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/_task_asset_sources/backups/pool_lights_rotate90_20261112_090422",
+  "lights": [
+    {
+      "path": "/World/FillLight_Left45",
+      "position": [
+        0,
+        -8,
+        12
+      ],
+      "ray_world": [
+        0.0,
+        0.7071067811865476,
+        -0.7071067811865475
+      ],
+      "intensity": 1500,
+      "inclination_down_deg": 45
+    },
+    {
+      "path": "/World/FillLight_Right45",
+      "position": [
+        0,
+        8,
+        12
+      ],
+      "ray_world": [
+        0.0,
+        -0.7071067811865476,
+        -0.7071067811865475
+      ],
+      "intensity": 1500,
+      "inclination_down_deg": 45
+    }
+  ],
+  "correction": "Removed and recreated the last two added lights, rotating their horizontal directions +90 degrees around world Z: +/-X becomes +/-Y. Existing original lights unchanged.",
+  "other_prims_preserved": 316
+}

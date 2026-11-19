@@ -1,0 +1,14 @@
+{
+  "path": "/World/FillLight_TopDown",
+  "type": "DistantLight",
+  "ray_world": [
+    0.0,
+    0.0,
+    -1.0
+  ],
+  "intensity": 1500,
+  "color": "white",
+  "backup": "/home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/scenes/Full Process AUV Simulation 2026/Underwater Items/_task_asset_sources/backups/pool_top_light_20261112_090755",
+  "existing_prims_preserved": 318,
+  "validation": "Reopened saved USD and verified vertical world -Z direction; all existing prim attributes unchanged; live GUI not reloaded."
+}

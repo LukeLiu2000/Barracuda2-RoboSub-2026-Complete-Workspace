@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "test_object_mass_kg": 0.2,
+  "test_object_dimensions_m": [
+    0.04,
+    0.07,
+    0.04
+  ],
+  "down_force_N": 1.962,
+  "hold_seconds": 3,
+  "slip_m": 0.003167710584348247,
+  "release_drop_m": 11.114460229873657
+}

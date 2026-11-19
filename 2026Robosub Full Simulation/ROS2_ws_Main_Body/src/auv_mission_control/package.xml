@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>auv_mission_control</name>
+  <version>0.1.0</version>
+  <description>AUV 逻辑控制:可复用目标管理(goal_manager)+ 键盘遥控(终端/浏览器)+ 基础保持。后续自主任务复用同一目标接口。</description>
+  <maintainer email="liuhao@example.com">liuhao</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-scipy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>auv_controller_pid</exec_depend>
+  <exec_depend>auv_perception</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

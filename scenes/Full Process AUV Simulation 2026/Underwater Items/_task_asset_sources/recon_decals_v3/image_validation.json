@@ -1,0 +1,28 @@
+[
+  {
+    "file": "fire_recon_hd_v3.png",
+    "resolution": [
+      1254,
+      1254
+    ],
+    "symbol_bbox": [
+      304,
+      182,
+      933,
+      1073
+    ]
+  },
+  {
+    "file": "blood_recon_hd_v3.png",
+    "resolution": [
+      1254,
+      1254
+    ],
+    "symbol_bbox": [
+      333,
+      216,
+      915,
+      1053
+    ]
+  }
+]

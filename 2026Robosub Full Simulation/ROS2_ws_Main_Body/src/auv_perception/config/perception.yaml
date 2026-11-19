@@ -1,0 +1,27 @@
+schema_version: 1
+world_frame: auv_world
+weights: /home/liuhao/LWKProjectWorkspaces/AUVIssacSIMWorkspace/2026Robosub Full Simulation/Model_Datas/weightsYOLO26a.pt
+inference_python: /home/liuhao/.local/share/pipx/venvs/ultralytics/bin/python
+device: '0'
+confidence: 0.35
+imgsz: 800
+templates: [task1_gate.yaml]
+state_tolerance_s: 0.12
+topics:
+  image: /auv/zed/left/image_rect
+  points: /auv/zed/points
+  camera_info: /auv/zed/left/camera_info
+camera_to_body:
+  verified: true
+  source: 'Runtime vision_scene.py calibrated mount: body optical axes (-X,-Y,+Z), camera midpoint at measured ZED mount; left baseline +body X 0.06m. Use only with this runtime camera profile; verify for other scenes.'
+  matrix:
+    - [-1.0, 0.0, 0.0, 0.068289]
+    - [0.0, -1.0, 0.0, 0.058686]
+    - [0.0, 0.0, 1.0, 0.36873]
+    - [0.0, 0.0, 0.0, 1.0]
+fit:
+  points_per_part: 240
+  min_inlier_fraction: 0.65
+  max_rms_m: 0.075
+  min_condition_ratio: 0.001
+  characteristic_length: 1.5

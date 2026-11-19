@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "rod_length_m": 0.30000000000000004,
+  "pitch_deg": 15,
+  "body_mass_kg": 40,
+  "motion_displacement_m": 0.46051836029550713,
+  "results": [
+    {
+      "dof_names": [
+        "finger_joint",
+        "left_inner_knuckle_joint",
+        "right_inner_knuckle_joint",
+        "right_outer_knuckle_joint",
+        "left_inner_finger_joint",
+        "right_inner_finger_joint"
+      ],
+      "dof_positions": [
+        3.4835093032370423e-08,
+        -1.5745733605854184e-08,
+        1.3272059895541588e-08,
+        1.4709027329473656e-09,
+        3.843933171765457e-09,
+        5.7942678433065e-12
+      ],
+      "phase": "open",
+      "fixed_joint_error_m": 2.376153676933178e-07,
+      "pad_centre_gap_m": 0.1360346227884286,
+      "body_world_origin": [
+        -1.4901161193847656e-07,
+        -5.960464477539062e-08,
+        0.9999999403953552
+      ]
+    },
+    {
+      "dof_names": [
+        "finger_joint",
+        "left_inner_knuckle_joint",
+        "right_inner_knuckle_joint",
+        "right_outer_knuckle_joint",
+        "left_inner_finger_joint",
+        "right_inner_finger_joint"
+      ],
+      "dof_positions": [
+        0.6981194615364075,
+        -0.6981189846992493,
+        -0.6981155276298523,
+        -0.698117733001709,
+        0.6981181502342224,
+        0.6981169581413269
+      ],
+      "phase": "closed",
+      "fixed_joint_error_m": 4.621952720997563e-07,
+      "pad_centre_gap_m": 0.007700592280390774,
+      "body_world_origin": [
+        -5.224347114562987e-05,
+        -4.291534423828125e-06,
+        1.0000754594802856
+      ]
+    },
+    {
+      "dof_names": [
+        "finger_joint",
+        "left_inner_knuckle_joint",
+        "right_inner_knuckle_joint",
+        "right_outer_knuckle_joint",
+        "left_inner_finger_joint",
+        "right_inner_finger_joint"
+      ],
+      "dof_positions": [
+        4.925024040858261e-05,
+        -4.7996971261454746e-05,
+        -6.154217408038676e-05,
+        -5.498044265550561e-05,
+        5.3767766075907275e-05,
+        5.533093280973844e-05
+      ],
+      "phase": "reopened",
+      "fixed_joint_error_m": 4.796102380411506e-07,
+      "pad_centre_gap_m": 0.13602557778351412,
+      "body_world_origin": [
+        6.645917892456054e-06,
+        -1.4901161193847654e-07,
+        0.9999914169311523
+      ]
+    },
+    {
+      "dof_names": [
+        "finger_joint",
+        "left_inner_knuckle_joint",
+        "right_inner_knuckle_joint",
+        "right_outer_knuckle_joint",
+        "left_inner_finger_joint",
+        "right_inner_finger_joint"
+      ],
+      "dof_positions": [
+        6.88741152998773e-08,
+        2.5969825401261915e-06,
+        -2.1212222236499656e-06,
+        -4.3229849211456894e-07,
+        -4.998206577511155e-07,
+        -1.6829987403710334e-09
+      ],
+      "phase": "vehicle_moving",
+      "fixed_joint_error_m": 1.2887372897612352e-06,
+      "pad_centre_gap_m": 0.13603456470084682,
+      "body_world_origin": [
+        0.46052497625350947,
+        -5.194544792175292e-05,
+        1.0001492500305176
+      ]
+    }
+  ]
+}

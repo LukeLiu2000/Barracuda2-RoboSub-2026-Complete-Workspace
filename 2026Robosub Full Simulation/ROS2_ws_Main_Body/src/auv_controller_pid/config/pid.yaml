@@ -1,0 +1,43 @@
+# =============================================================================
+# PID 参数(第一版基线:低幅度 conservative 起步,自动整定产出
+# pid_tuned_*.yaml 后按实验加载)。
+# 轴序 [fx, fy, fz, mx, my, mz](体坐标系 +x 左舷 +y 上 +z 前)。
+# 起步原则:先 P、D,后 I;积分限幅远小于输出限幅。
+# =============================================================================
+/**:
+  ros__parameters:
+    topics:
+      state: /auv/state/control
+      goal: /auv/control/goal
+      # 监测发布(2026-11-10 增;只读监测,不影响控制)
+      effective_goal: /auv/pid/effective_goal
+      goal_source: /auv/pid/goal_source
+
+    rates:
+      control_hz: 50.0
+      # 监测发布频率(effective_goal/goal_source);0=关闭
+      monitor_hz: 10.0
+
+    safety:
+      # 状态过期阈值(单调墙钟,不依赖可能暂停的仿真时间)
+      state_timeout_wall_s: 0.6
+
+    pid:
+      # 平移:40 kg、原生 linearDamping≈2 => 等效一阶时间常数
+      # m/(c)=20s,极慢;P=30 => 闭环 v≈0.75 m/s @1m 误差,保守起步。
+      kp: [30.0, 30.0, 30.0, 2.5, 2.5, 2.5]
+      ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      kd: [60.0, 60.0, 60.0, 1.2, 1.2, 1.2]
+      # 积分限幅(输出量纲:N / N·m)
+      integral_limit: [12.0, 12.0, 12.0, 1.5, 1.5, 1.5]
+      # 输出限幅(>1e8 视为不限;整定后建议显式数值)
+      output_limit: [1.0e9, 1.0e9, 1.0e9, 1.0e9, 1.0e9, 1.0e9]
+      # 微分低通截止 [Hz](<=0 关闭)
+      d_filter_hz: 8.0
+      # 分配饱和回衰增益(0=关闭)
+      back_calc_gain: 0.4
+      # 重力/浮力前馈(纯 PID 基线必须 false;开启时属于增强版,须记录)
+      enable_feedforward: false
+      feedforward_force_body: [0.0, 0.0, 0.0]
+      # 无外部目标时是否保持(hold)当前位姿
+      hold_on_start: true

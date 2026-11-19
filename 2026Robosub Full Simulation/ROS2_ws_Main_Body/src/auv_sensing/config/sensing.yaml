@@ -1,0 +1,48 @@
+# zed_sensor_node 参数。
+# 顶层键用全限定名(节点经 sensing.launch.py 启动时带 /auv 命名空间)。
+# 注意(2026-11-02 实测):Jazzy 下裸名键 zed_sensor_node: 【不会】匹配
+# /auv/zed_sensor_node,参数会被静默忽略——旧版配置恰好所有值都等于代码
+# 默认值,所以这个坑从未暴露。不走 launch、直接 ros2 run 时需加
+#   --ros-args -r __ns:=/auv(或把本键改回裸名)。
+/auv/zed_sensor_node:
+  ros__parameters:
+    # ---- 数据源 ----
+    # ZED 流服务端。Isaac Sim 的 sl.sensor.camera 扩展在本机推流(IPC),
+    # 所以默认 127.0.0.1;跨机时改 IP 并把场景 ZED 节点 Transport 设为 NETWORK。
+    stream_ip: 127.0.0.1
+    stream_port: 30000           # 场景里 ZED Camera 节点的 Port(默认 30000)
+    # SDK 深度模式:NONE/PERFORMANCE/QUALITY/NEURAL/ULTRA/...
+    # PERFORMANCE:GPU 立体匹配,无需先编译引擎,实测可用(44.7% 有效深度)。
+    depth_mode: PERFORMANCE
+
+    # ---- 连接重试 ----
+    open_retry_s: 5.0            # 断开后隔几秒重试(摘要线程照常显示状态)
+
+    # ---- 发布开关(闭环联调只需 IMU 时全部关掉;false = 话题不存在) ----
+    # 关闭的通道不创建 publisher、跳过 retrieve/转换/构造;
+    # 深度+点云都为 false 时 SDK 以 DEPTH_MODE.NONE 打开(跳过立体匹配)。
+    # 注意:Isaac 侧 ZED 扩展仍按场景 fps 渲染并推流,grab() 仍接收解码
+    # (IMU 与时间戳依赖它)——这部分计算在本节点之外,要停需改场景端。
+    publish_left_image: false    # 本轮联调:关(要图像时改 true)
+    publish_right_image: false   # 本轮联调:关
+    publish_depth: false         # 本轮联调:关
+    publish_points: false        # 本轮联调:关
+    publish_imu: true            # 保留(闭环/状态估计需要)
+
+    # ---- 发布频率上限(按数据时间戳限频,流里没有新帧就不发) ----
+    # 流本身 60 Hz(场景 ZED 节点 fps=60)。1920x1200 bgra8 单帧约 9.2 MB,
+    # 15 Hz 左目 ≈ 138 MB/s,本机 DDS 可承受,跨机/录包请调低。
+    image_rate_hz: 15.0
+    depth_rate_hz: 10.0          # 32FC1 单帧 9.2 MB,注意带宽
+    points_rate_hz: 5.0          # 点云抽稀后 ~3.2 MB/帧
+    points_max_points: 200000    # 抽稀目标上限(全图 230 万点,发不动)
+
+    # ---- 坐标系(frame_id 只是个字符串,与 TF/URDF 对齐靠约定) ----
+    left_frame: zed_left_camera_frame     # ZED SDK 默认 IMAGE 系:x 右 y 下 z 前
+    right_frame: zed_right_camera_frame
+    depth_frame: zed_left_camera_frame    # 深度图对齐左目
+    points_frame: zed_left_camera_frame   # 点云在左目光学系
+    imu_frame: zed_imu_link
+
+    # ---- 终端摘要 ----
+    summary_period_s: 1.0        # 每秒一行:连接状态/各话题频率/IMU/仿真时间

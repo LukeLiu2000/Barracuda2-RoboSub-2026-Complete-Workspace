@@ -1,0 +1,3 @@
+# 资源索引标记文件(标准要求,内容为空)。
+# ament_index_python 靠 share/ament_index/resource_index/packages/<包名>
+# 这个文件判断"该包已安装"。它不参与运行,缺失会导致包找不到。

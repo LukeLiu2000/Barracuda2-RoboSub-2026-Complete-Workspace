@@ -1,0 +1,82 @@
+schema_version: 1
+id: task1_gate
+planner: gate_pass
+visual_target:
+  whole_labels: [Gate]
+  part_labels: [LeftPillar, RightPillar, FlagSOS, FlagRepair]
+  part_selection: highest_confidence
+  center_labels: [MiddleRedPillar]
+  horizontal_labels: [HorizontalBar]
+geometry_template: package://auv_perception/config/templates/task1_gate.yaml
+# X positive through gate; Y left; Z up; origin at beam center.
+# Entry side selected ONCE from robot position. This rotates X/Y together.
+entry_side: auto
+min_entry_distance_m: 0.30
+min_up_alignment: 0.85
+repeat: true
+max_laps: 0  # 0 means unlimited; set 1 for first full-cycle validation.
+# position_m is [X,Y,Z]. Semantic anchors are added to Y/Z, respectively.
+# Height derives from model MiddleRedPillar bottom: 0.63785m below beam.
+# RPY fixed task axes (degrees); yaw=0 forward, yaw=180 reverse.
+waypoints:
+  - name: gate_front_center
+    position_m: [-3.0, 0.0, 0.0]
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: settle
+  - name: sos_front_align
+    position_m: [-2.0, 0.0, 0.0]
+    lateral_anchor: sos
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: settle
+  - name: sos_plane
+    position_m: [0.0, 0.0, 0.0]
+    lateral_anchor: sos
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: pass
+  - name: sos_rear_clear
+    position_m: [1.0, 0.0, 0.0]
+    lateral_anchor: sos
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: settle
+  - name: gate_rear_center
+    position_m: [3.0, 0.0, 0.0]
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: settle
+  - name: gate_rear_turn
+    position_m: [3.0, 0.0, 0.0]
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 180.0]
+    mode: settle
+  - name: repair_rear_align
+    position_m: [2.0, 0.0, 0.0]
+    lateral_anchor: repair
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 180.0]
+    mode: settle
+  - name: repair_plane
+    position_m: [0.0, 0.0, 0.0]
+    lateral_anchor: repair
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 180.0]
+    mode: pass
+  - name: repair_front_clear
+    position_m: [-1.0, 0.0, 0.0]
+    lateral_anchor: repair
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 180.0]
+    mode: settle
+  - name: gate_front_return
+    position_m: [-3.0, 0.0, 0.0]
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 180.0]
+    mode: settle
+  - name: gate_front_turn
+    position_m: [-3.0, 0.0, 0.0]
+    height_anchor: middle_bottom
+    rpy_deg: [0.0, 0.0, 0.0]
+    mode: settle

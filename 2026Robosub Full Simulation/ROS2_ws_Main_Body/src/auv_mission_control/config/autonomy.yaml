@@ -1,0 +1,61 @@
+# Units: meters, degrees, seconds. Edit and restart mission to reload.
+schema_version: 1
+world_frame: auv_world
+task_file: tasks/task1_gate.yaml
+goal_rate_hz: 10.0
+state_timeout_wall_s: 0.5
+topics:
+  state: /auv/state/control
+  goal: /auv/control/goal
+  map: /auv/perception/object_map
+  detections_2d: /auv/perception/detections_2d
+perception_config: package://auv_perception/config/perception_gui.yaml
+visual_approach:
+  enabled: true
+  min_confidence: 0.75
+  min_bbox_fraction: 0.00003
+  lookahead_m: 10.0  # virtual forward target, NOT measured target range
+  approach_speed_mps: 0.18
+  part_speed_factor: 0.40
+  part_vertical_enabled: false
+  max_vertical_ray: 0.25
+  align_tolerance_deg: 6.0
+  stable_frames: 2
+  max_bearing_jump_deg: 20.0
+  max_age_s: 2.0  # live detection gaps reach 1.3-1.7s; still stop when this expires
+  max_future_s: 0.05
+  capture_pose_tolerance_s: 0.12
+  loss_grace_s: 1.5
+  stop_width_fraction: 0.65
+  stop_height_fraction: 0.75
+  max_travel_m: 12.0
+  timeout_s: 600.0  # accumulated APPROACH_2D time only; alignment/waiting do not consume it
+arrival:
+  position_tolerance_m: 0.18
+  orientation_tolerance_deg: 8.0
+  linear_speed_mps: 0.12
+  angular_speed_deg_s: 6.0
+  dwell_s: 0.5
+  exit_ratio: 1.4
+  pass_corridor_m: 0.20
+search:
+  yaw_rate_deg_s: 10.0
+  max_yaw_lead_deg: 15.0
+  timeout_s: 240.0
+acquisition:
+  samples: 3
+  stable_s: 1.0
+  max_age_s: 2.0
+  max_future_s: 0.05  # small transport/timestamp rounding allowance, not a stale-map bypass
+  window_s: 5.0
+  position_spread_m: 0.12
+  angle_spread_deg: 6.0
+reference:
+  linear_speed_mps: 0.25
+  angular_speed_deg_s: 15.0
+  max_position_lead_m: 0.60
+progress:
+  waypoint_timeout_s: 180.0
+  no_progress_s: 35.0
+  min_improvement_m: 0.02
+  angle_weight_m_per_rad: 0.40

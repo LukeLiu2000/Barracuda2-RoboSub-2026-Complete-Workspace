@@ -1,0 +1,15 @@
+# dynamics.yaml 的原始默认值快照(系统辨识导出时不会被覆盖)。
+# 内容与 dynamics.yaml 初始版本完全一致,说明见 dynamics.yaml 注释。
+/**:
+  ros__parameters:
+    dynamics:
+      mass: 40.0
+      inertia: [4.23, 5.60, 3.17]
+      added_mass: [12.0, 14.0, 10.0, 0.60, 0.80, 0.50]
+      linear_damping: [15.0, 18.0, 15.0, 1.0, 1.2, 1.0]
+      quadratic_damping: [45.0, 60.0, 60.0, 2.0, 3.0, 3.0]
+      gravity_world: [0.0, 0.0, -9.81]
+      world_up: [0.0, 0.0, 1.0]
+      buoyancy_force: 387.4
+      cb_position: [0.0, 0.02, 0.0]
+      thrust_scale: 1.0

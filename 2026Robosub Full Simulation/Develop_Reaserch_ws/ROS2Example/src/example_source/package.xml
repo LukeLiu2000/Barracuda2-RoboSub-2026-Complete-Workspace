@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>example_source</name>
+  <version>0.1.0</version>
+  <description>ROS 2 教学示例 C++ 包(ament_cmake):counter_node 计数发布,feedback_node 接收反馈</description>
+  <maintainer email="liuhao@example.com">liuhao</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- 构建工具:ament_cmake(而不是 ament_python) -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- 编译与运行都需要的依赖 -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+
+  <!-- launch 文件在运行期由 Python 解释执行,属于执行期依赖 -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

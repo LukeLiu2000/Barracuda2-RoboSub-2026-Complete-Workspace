@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema-instance"?>
+<package format="3">
+  <name>auv_controller_MPPI</name>
+  <version>0.1.0</version>
+  <description>
+    MPPI (Model Predictive Path Integral) controller for the 8-thruster
+    6-DOF RoboSub AUV "barracuda2". Contains: forward dynamics model
+    (Fossen), thruster allocation (6x8), MPPI solver, cost function,
+    control-sequence executor, ROS 2 controller node, training mission
+    node, training data collector and offline system identification.
+  </description>
+  <maintainer email="liuhao@todo.todo">liuhao</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>eigen</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,13 @@
+# 实验默认参数(experiment_runner 的 ROS 参数在此预置,命令行可覆盖)
+runner:
+  controller: pid            # pid | mppi | gru
+  out_dir: ~/auv_experiments/run_pid
+  bridge_host: 127.0.0.1
+  bridge_port: 17790         # ros-on 无头桥配置端口
+  tasks: all                 # all 或逗号分隔任务名(见 tasks.task_list)
+  record_bag: true
+  pos_tol_m: 0.08
+  ang_tol_rad: 0.087         # ≈5°
+  hold_time_s: 3.0
+  state_timeout_wall_s: 1.0
+  oob_radius_m: 2.5

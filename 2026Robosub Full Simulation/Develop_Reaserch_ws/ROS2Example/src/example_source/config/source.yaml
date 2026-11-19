@@ -1,0 +1,16 @@
+# counter_node 的默认参数文件。
+#
+# 为什么顶层键写 `/**`:
+#   带命名空间启动后,节点的全名是 /demo/counter_node。
+#   YAML 里不带斜杠的键(如 counter_node:)只匹配全局命名空间下的同名节点,
+#   换命名空间后会静默失效;`/**` 通配符匹配任意命名空间,
+#   因此 launch 修改 namespace 参数后这份文件依然生效(包括默认的 demo)。
+#   代价是其中的参数会下发给所有节点——本包的 feedback_node 没有声明这些
+#   参数,未声明的覆盖会被直接忽略,不会报错。
+#
+# 生效方式:source.launch.py 把本文件路径传给 counter_node 的 parameters。
+/**:
+  ros__parameters:
+    publish_rate_hz: 2.0   # 发布频率 Hz,必须 > 0
+    start_value: 0         # 计数起点
+    increment: 1           # 每次递增量
